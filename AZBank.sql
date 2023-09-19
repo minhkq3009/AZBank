@@ -25,7 +25,7 @@ CREATE TABLE CustomerTransaction (
     TransactionId INT PRIMARY KEY,
     AccountNumber CHAR(9) NOT NULL,
     TransactionDate SMALLDATETIME,
-    Amount MONEY NOT NULL,
+    Amount MONEY,
     DepositorWithdraw BIT,
     CONSTRAINT FK_CustomerTransaction_AccountNumber FOREIGN KEY (AccountNumber) REFERENCES CustomerAccount(AccountNumber),
     CONSTRAINT CHK_AmountRange CHECK (Amount > 0 AND Amount <= 1000000)
