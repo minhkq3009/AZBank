@@ -8,14 +8,14 @@ CREATE TABLE Customer (
     City NVARCHAR(50),
     Country NVARCHAR(50),
     Phone NVARCHAR(15),
-    Email NVARCHAR(50)
+    Email NVARCHAR(50) 
 );
 
 -- Create the CustomerAccount table
 CREATE TABLE CustomerAccount (
     AccountNumber CHAR(9) PRIMARY KEY,
-    CustomerId INT,
-    Balance MONEY,
+    CustomerId INT NOT NULL,
+    Balance MONEY NOT NULL,
     MinAccount MONEY,
     CONSTRAINT FK_CustomerAccount_CustomerId FOREIGN KEY (CustomerId) REFERENCES Customer(CustomerId)
 );
@@ -23,9 +23,9 @@ CREATE TABLE CustomerAccount (
 -- Create the CustomerTransaction table
 CREATE TABLE CustomerTransaction (
     TransactionId INT PRIMARY KEY,
-    AccountNumber CHAR(9),
+    AccountNumber CHAR(9) NOT NULL,
     TransactionDate SMALLDATETIME,
-    Amount MONEY,
+    Amount MONEY NOT NULL,
     DepositorWithdraw BIT,
     CONSTRAINT FK_CustomerTransaction_AccountNumber FOREIGN KEY (AccountNumber) REFERENCES CustomerAccount(AccountNumber),
     CONSTRAINT CHK_AmountRange CHECK (Amount > 0 AND Amount <= 1000000)
