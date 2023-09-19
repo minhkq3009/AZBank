@@ -23,7 +23,7 @@ CREATE TABLE CustomerAccount (
 -- Create the CustomerTransaction table
 CREATE TABLE CustomerTransaction (
     TransactionId INT PRIMARY KEY,
-    AccountNumber CHAR(9) NOT NULL,
+    AccountNumber CHAR(9),
     TransactionDate SMALLDATETIME,
     Amount MONEY,
     DepositorWithdraw BIT,
